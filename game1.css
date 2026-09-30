@@ -1,0 +1,206 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, rgb(77, 0, 128), rgb(3, 23, 65), rgb(39, 104, 235));
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+hr {
+    width: 80%;
+    max-width: 500px;
+    height: 2px;
+    background: orangered;
+    border: none;
+    margin: 10px auto;
+}
+
+#game-board {
+    width: 90vw;
+    max-width: 450px;
+    aspect-ratio: 1/1;
+    margin: 10px auto;
+    background-color: rgb(42, 158, 204);
+    border: 6px solid rgb(110, 170, 189);
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.game-cell {
+    border: 6px solid lightblue;
+    border-radius: 2px;
+    font-size: 100px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+} 
+
+.x{
+    color: black;
+    text-shadow: 0 0 8px red, 
+                 0 0 15px red, 
+                 0 0 25px red;
+}
+
+.o{
+    color: black;
+    text-shadow: 0 0 8px orange, 
+                 0 0 15px orange, 
+                 0 0 25px orange;
+}
+
+.winning-game-cell {
+    background-color: white;
+    color: black;
+    animation: zoom 0.7s infinite;
+}
+
+@keyframes zoom{
+    0%{
+        transform: scale(0.75);
+    }
+    50%{
+        transform: scale(1.0);
+    }
+    100%{
+        transform: scale(0.75);
+    }
+}
+
+.winner-message{
+    display: none;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 15px 25px;
+    background-color: white;
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 15px;
+    text-align: center;
+    text-shadow: 2px 2px 8px black,
+                 0 0 15px yellow,
+                 0 0 25px white;
+    box-shadow: 0 0 20px gold;
+    animation: winnerAnimation 1s infinite alternate;
+}
+
+@keyframes winnerAnimation{
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1.1);
+    }
+}
+
+.exit-message{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    padding: 25px;
+    background: white;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    z-index: 1000;   
+}
+
+.exit-message p{
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: black;
+}
+
+.exit-message button{
+    padding: 10px 25px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.exit-message button:first-of-type{
+    background: rgb(247, 71, 71);
+    color: white;
+}
+
+.exit-message button:last-of-type{
+    background: rgb(34, 167, 81);
+    color: white;
+}
+
+#game-restart-button {
+    height: 50px;
+    width: 160px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#game-restart-button:hover{
+    background-color: darkred;
+}
+
+
+@media (max-width: 768px){
+    h1{
+        font-size: 32px;
+    }
+
+    #game-board{
+        width: 360px;
+    }
+
+    .game-cell{
+        font-size: 70px;
+    }
+}
+
+@media (max-width: 480px){
+    h1{
+        font-size: 26px;
+    }
+
+    #game-board{
+        width: 300px;
+    }
+
+    .game-cell{
+        font-size: 55px;
+    }
+
+    #game-restart-button{
+        width: 130px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    #result{
+        font-size: 24px;
+    }
+}
